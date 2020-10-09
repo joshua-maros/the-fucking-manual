@@ -1,0 +1,11 @@
+{
+  "name": "the-fucking-manual",
+  "version": "1.0.0",
+  "main": "n/a",
+  "repository": "git@github.com:joshua-maros/the-fucking-manual.git",
+  "author": "joshua-maros <60271685+joshua-maros@users.noreply.github.com>",
+  "license": "CC-BY-NC-SA-4.0",
+  "dependencies": {
+    "@types/p5": "^0.9.1"
+  }
+}
