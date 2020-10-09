@@ -1,0 +1,23 @@
+img {
+    width: 100%;
+}
+
+img + em, div.sketch + p > em {
+    display: block;
+    text-align: center;
+}
+
+/* Quick hack to make the canvas scale with the page without adjusting the 
+   actual resolution */
+div > canvas {
+    width: 100% !important;
+    height: unset !important;
+    border-left: 0.2em solid var(--inline-code-color);
+    padding-left: 1em;
+    margin-left: -1.2em;
+    transition: 0.2s;
+}
+
+div > canvas:hover {
+    border-color: rgba(0, 0, 0, 0);
+}
