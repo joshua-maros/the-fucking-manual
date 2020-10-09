@@ -3,32 +3,34 @@
 # Turning Numbers Into Pictures
 To start learning computer graphics, it's important to know how a computer
 represents a picture in the first place. Computers are basically just very fast
-calculators, so we need to find a way to efficiently represent a picture only
-using numbers. To find that representation, let's start by looking at how light
-exists in the real world.
+calculators, so we need to find a way to efficiently represent a picture using
+only numbers. To find that representation, let's start by looking at how
+light exists in the real world.
 
 ### How Light Works
 Light is made of photons. Every photon of light has a particular frequency that
 determines its characteristics. (You may also hear the term "wavelength", which
-is the inverse of frequency.) For example, mircowaves and radio waves with their
-relatively low frequencies can pass through objects almost completely
-undisturbed making them great for long-distance communications. X-Rays with
-their much, much higher frequencies can energetically tear their way through
-flesh but get stopped by bone. A narrow section of frequencies forms all the
-light we can see, and is likewise called "visible light". Light sources emit
+is the inverse of frequency.) For example, radio waves with their relatively low
+frequencies can pass through objects almost completely undisturbed making them
+great for long-distance communications. X-Rays with their much, much higher
+frequencies can energetically tear their way through flesh but get stopped by
+bone. A narrow section of frequencies forms all the light we can see, and is
+likewise called "visible light".
+
+![Chart of the electromagnetic spectrum, showing which area corresponds to visible light](https://www.wikilectures.eu/images/6/68/4.2_wavelengthspectrum.png)
+*Electromagnetic Spectrum by Wikilectures, licensed under CC BY-SA 3.0, [click for source](https://www.wikilectures.eu/w/LIGHT,_EYE_AND_VISION#1.1.4..C2.A0Eye)*
+
+Light sources emit
 many photons in a range of visible frequencies. When these photons hit other
 objects, they may be absorbed or deflected in some manner. Different objects
 will absorb more or less of particular frequencies, which is why objects appear
 to have different colors. It is the frequencies of light that they leave
 unabsorbed that determine the color the object appears to be.
 
-![Chart of the electromagnetic spectrum, showing which area corresponds to visible light](https://www.wikilectures.eu/images/6/68/4.2_wavelengthspectrum.png)
-*Electromagnetic Spectrum by Wikilectures, licensed under CC BY-SA 3.0, [click for source](https://www.wikilectures.eu/w/LIGHT,_EYE_AND_VISION#1.1.4..C2.A0Eye)*
-
 ### Too Much Data
 From that initial description, we could construct a simple but inefficient way
 of representing a picture using only numbers. We could store a list of photons,
-each photon being represened by four numbers. The first three would be the
+each photon being represened by four numbers. The first three would describe the
 position of the photon and the fourth would be the frequency of the photon.
 While this works, it would make pictures take up a massive amount of data. A
 good photo would be made of billions of photons. Something we can take advantage
@@ -38,10 +40,9 @@ see how we might do that, let's recap how the human eye works.
 
 ### Our Eyes
 We see an object when light bounces off of that object and enters our eyes,
-striking a layer of light-sensetive cells called the retina. The retina
-transmits what it sees to our brain. Inside the retina, there are four different
-kinds of cells which detect light. Each of these respond differently to
-different frequencies of light.
+striking a layer of light-sensetive cells called the retina. Inside the retina,
+there are four different kinds of cells which detect light. Each of these
+respond only to certain frequencies of light.
 
 ![Graph of how different cells respond to frequencies of light](https://www.wikilectures.eu/images/5/53/4.2.4rhodsandconesgraf.png)
 *Rods And Cones by Wikilectures, licensed under CC BY-SA 3.0, [click for source](https://www.wikilectures.eu/w/LIGHT,_EYE_AND_VISION#1.1.4..C2.A0Eye)*
@@ -77,3 +78,5 @@ standard HD image measures "1920x1080", meaning there are 1,920 pixels from left
 to right and 1,080 pixels from top to bottom.
 
 <div id="test-sketch" class="sketch"></div>
+
+*Image by Julius Silver, licensed under CC0, [click for source](https://www.pexels.com/photo/saint-basil-s-cathedral-753339/)*
