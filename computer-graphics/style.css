@@ -6,3 +6,10 @@ img + em {
     display: block;
     text-align: center;
 }
+
+/* Quick hack to make the canvas scale with the page without adjusting the 
+   actual resolution */
+div > canvas {
+    width: 100% !important;
+    height: unset !important;
+}

@@ -1,3 +1,9 @@
+let clientMousePos = { x: 0, y: 0 };
+document.addEventListener('mousemove', event => {
+    clientMousePos.x = event.clientX;
+    clientMousePos.y = event.clientY;
+});
+
 /**
  * Makes a new sketch in the element with ID provided by divId. Your builder 
  * function should set the fields `setup` and `draw` on the provided instance.
@@ -6,22 +12,40 @@
  * div.
  * @param {string} divId 
  * @param {number} heightRatio.
- * @param {(instance: import('p5')) => void} builder 
+ * @param {(instance: import('p5')) => void} setup 
+ * @param {(instance: import('p5'), mouseX: number, mouseY: number, time: number) => void} draw
  */
-function makeSketch(divId, heightRatio, builder) {
+function makeSketch(divId, heightRatio, setup, draw) {
     let div = document.getElementById(divId);
     let width = div.clientWidth;
     let height = heightRatio * width;
-    let wrappedBuilder = instance => {
-        builder(instance);
-        let oldSetup = instance.setup;
+    let time = 0;
+    let lastFrame = Date.now();
+    let first = true;
+    let builder = instance => {
         instance.setup = () => {
             instance.createCanvas(width, height);
-            oldSetup();
+            setup(instance);
+        };
+        instance.draw = () => {
+            let rect = div.getBoundingClientRect();
+            let relx = clientMousePos.x - rect.x;
+            let rely = clientMousePos.y - rect.y;
+            if (first) {
+                first = false;
+                relx = rect.width * 0.8;
+                rely = rect.height * 0.5;
+            }
+            let thisFrame = Date.now();
+            let elapsed = thisFrame - lastFrame;
+            lastFrame = thisFrame;
+            if (relx < 0 || rely < 0 || relx > rect.width || rely > rect.height) return;
+            instance.scale(width / 100.0);
+            time += elapsed;
+            draw(instance, relx / rect.width * 100.0, rely / rect.width * 100.0, time / 1000.0);
         };
     };
-    console.log(width, height);
-    new p5(wrappedBuilder, divId);
+    new p5(builder, divId);
 }
 
 /**

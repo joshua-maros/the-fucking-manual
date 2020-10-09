@@ -1,4 +1,4 @@
-<script src="anims.js"></script>
+<script src="content.js"></script>
 
 # Turning Numbers Into Pictures
 To start learning computer graphics, it's important to know how a computer
@@ -22,6 +22,9 @@ will absorb more or less of particular frequencies, which is why objects appear
 to have different colors. It is the frequencies of light that they leave
 unabsorbed that determine the color the object appears to be.
 
+![Chart of the electromagnetic spectrum, showing which area corresponds to visible light](https://www.wikilectures.eu/images/6/68/4.2_wavelengthspectrum.png)
+*Electromagnetic Spectrum by Wikilectures, licensed under CC BY-SA 3.0, [click for source](https://www.wikilectures.eu/w/LIGHT,_EYE_AND_VISION#1.1.4..C2.A0Eye)*
+
 ### Too Much Data
 From that initial description, we could construct a simple but inefficient way
 of representing a picture using only numbers. We could store a list of photons,
@@ -41,6 +44,7 @@ kinds of cells which detect light. Each of these respond differently to
 different frequencies of light.
 
 ![Graph of how different cells respond to frequencies of light](https://www.wikilectures.eu/images/5/53/4.2.4rhodsandconesgraf.png)
+*Rods And Cones by Wikilectures, licensed under CC BY-SA 3.0, [click for source](https://www.wikilectures.eu/w/LIGHT,_EYE_AND_VISION#1.1.4..C2.A0Eye)*
 
 From this, we can derive two very useful hacks. First, we don't have to store
 positions of photons in the real world, we just have to store enough "photons"
@@ -55,4 +59,21 @@ Images are just big grids. The boxes are called "pixels". Each pixel stores how
 much light from that pixel excites the three cones of the human eye. A computer
 display is likewise built of a grid of pixels. Each pixel has a red, green, and
 blue light, usually abbreviated as RGB. By controlling the brightness of each
-light, the corresponding cones in the human eye can be activated.
+light, the corresponding cones in the human eye can be activated. We normally
+represent the strengths of those components in one of two ways. The first is
+with decimal numbers ranging from 0 to 1, which is mathematically useful for
+generating or manipulating images. The second is with an integer from 0 to 255,
+which is usually how images are stored since it's more space efficient than
+decimal numbers but still enough resolution that (when used correctly) the human
+eye does not percieve the sudden steps between levels of brightness associated
+with each number. Since pixels lie on a grid, we can also use numbers to
+describe positions in the image called coordinates. These coordinates are two
+dimensional, having an X coordinate and a Y coordinate. They can have any unit,
+so it is common for image editing applications to support using units like
+inches and centimeters so an artist will know how large their image will be when
+printed. The simplest unit is to just use pixels, where 1 unit is equal to the
+size of a pixel. This usually doesn't come with any abbreviation. For example, a
+standard HD image measures "1920x1080", meaning there are 1,920 pixels from left
+to right and 1,080 pixels from top to bottom.
+
+<div id="test-sketch" class="sketch"></div>
